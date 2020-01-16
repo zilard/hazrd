@@ -84,8 +84,6 @@ func Liquidate(w http.ResponseWriter, r *http.Request) {
     var rem Removal
     var LiquidatedList = []LiquidatedMaterial{}
 
-    //LiquidatedList = []LiquidatedMaterial{}
-
 
     result := json.NewDecoder(r.Body).Decode(&rem)
 
