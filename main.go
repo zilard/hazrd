@@ -21,27 +21,28 @@ type Container struct {
     RemovalCostPrLitre    float32     `json:"removalCostPrLitre"`
 }
 
+var Containers ContainerMap
 
-type Removal struct {
+
+type RemovalStruct struct {
     RemovalCost           float32     `json:"removalCost"`
 }
 
+var Removal RemovalStruct
+
 
 type Cont struct {
-    id          int
-    vol         float32
-    hazardPrLt  float32
-    remCostPrLt float32
+    id            int
+    vol           float32
+    hazardPrLt    float32
+    remCostPrLt   float32
 }
 
 
 type LiquidatedMaterial struct {
-    Id                 int            `json:"id"`
-    VolumeToLiquidate  float32        `json:"volumeToLiquidate"`
+    Id                  int            `json:"id"`
+    VolumeToLiquidate   float32        `json:"volumeToLiquidate"`
 }
-
-
-var Containers ContainerMap
 
 
 
@@ -59,7 +60,8 @@ func main() {
 
     r.HandleFunc("/container/{id}", AddOrUpdateContainer).Methods("PUT")
     r.HandleFunc("/liquidate", Liquidate).Methods("POST")
-    r.HandleFunc("/show", ShowContainers).Methods("GET")
+    r.HandleFunc("/showcontainers", ShowContainers).Methods("GET")
+    r.HandleFunc("/showspare", ShowAvailableRemovalSpare).Methods("GET")
 
     fmt.Printf("SERVER LISTENING ON :%d\n", PORT)
     log.Fatal(http.ListenAndServe(":" + strconv.Itoa(PORT), r))
@@ -76,12 +78,20 @@ func ShowContainers(w http.ResponseWriter, r *http.Request) {
 
 
 
+func ShowAvailableRemovalSpare(w http.ResponseWriter, r *http.Request) {
+
+     json.NewEncoder(w).Encode(Removal)
+
+}
+
+
+
 func Liquidate(w http.ResponseWriter, r *http.Request) {
 
     var RemovalSpare float32
+    var rem RemovalStruct
     var consumedSpare float32
     var liquidatedVol float32
-    var rem Removal
     var LiquidatedList = []LiquidatedMaterial{}
 
 
@@ -92,9 +102,11 @@ func Liquidate(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    fmt.Printf("rem %v rem.RemovalCost %f\n", rem, rem.RemovalCost)
+    Removal.RemovalCost += rem.RemovalCost
 
-    RemovalSpare = rem.RemovalCost
+    fmt.Printf("RemovalStruct %v\n", Removal.RemovalCost)
+
+    RemovalSpare = Removal.RemovalCost
 
     var ContList []Cont
 
@@ -167,7 +179,9 @@ func Liquidate(w http.ResponseWriter, r *http.Request) {
                                                    liquidatedVol,
                                         })
 
+
             }
+            Removal.RemovalCost = RemovalSpare
         }
 
     }

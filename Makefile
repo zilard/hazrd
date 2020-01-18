@@ -11,12 +11,13 @@ build: install
 	GOPATH=${GOPATH} go build
 
 clean:
-	rm -fr ${GOPATH}
-	rm hazrd
+	rm -fr ${GOPATH} | true
+	rm hazrd | true
+	docker ps -a | grep "hazrd-image:latest" | awk '{print $$1 }' | xargs -I {} docker rm {} --force | true
+	docker rmi hazrd-image:latest --force | true
 
 image: build
 	docker build -t hazrd-image .
-	docker image tag hazrd-image:latest hazrd-image:v1
 
 run:
 	docker run -p 8080:8080 hazrd-image:latest hazrd
