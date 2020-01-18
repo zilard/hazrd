@@ -49,9 +49,6 @@ METHOD | QUERY | BODY | DESCRIPTION | RETURN
 
     make run
 
-or
-
-    docker run -p 8080:8080 hazrd-image:latest hazrd
 
 
     
