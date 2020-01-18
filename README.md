@@ -30,11 +30,11 @@ How much of each liquid (in liters) should be removed?
 The above problem is solved as a microservice exposing a JSON HTTP API,
 with the following endpoints, and the service is packaged as a docker cotainer.
 
-
 METHOD | QUERY | BODY | DESCRIPTION | RETURN
---- | --- | --- | --- | ---
-**PUT** | `/container/{id}` | `{`<br>&emsp;&emsp;`volume: float,`<br>&emsp;&emsp;`hazardPrLitre: float,`<br>&emsp;&emsp;`removalCostPrLitre: float`<br>`}` | Add or update a<br>container. Where `id` is<br>an integer. |
-**POST** | `/liquidate` | `{`<br>&emsp;&emsp;`removalCost: float`<br>`}` | Remove liquids from<br>containers such that it<br>satisfies the above<br>problem statement.<br>The `removalCost` parameter<br>corresponds to the `S` USD<br>to spare for removal. | `[`<br>&emsp;&emsp;`{`<br>&emsp;&emsp;&emsp;&emsp;`id: int,`<br>&emsp;&emsp;&emsp;&emsp;`volumeToLiquidate: float`<br>&emsp;&emsp;`{`<br>`]`
+:--- | :--- | :--- | :--- | :---
+**PUT** | `/container/{id}` | `{`&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br>&emsp;&emsp;`volume: float,`<br>&emsp;&emsp;`hazardPrLitre: float,`<br>&emsp;&emsp;`removalCostPrLitre: float`<br>`}` | Add or update a&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br>container. Where `id` is<br>an integer.
+**POST** | `/liquidate` | `{`<br>&emsp;&emsp;`removalCost: float`<br>`}` | Remove liquids from<br>containers such that it<br>satisfies the above<br>problem statement.<br>The `removalCost` parameter<br>corresponds to the `S` USD<br>to spare for removal. | `[`&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br>&emsp;&emsp;`{`<br>&emsp;&emsp;&emsp;&emsp;`id: int,`<br>&emsp;&emsp;&emsp;&emsp;`volumeToLiquidate: float`<br>&emsp;&emsp;`{`<br>`]`
+
 
 
 
