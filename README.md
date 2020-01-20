@@ -25,6 +25,8 @@ to reduce your insurance cost.
 How much of each liquid (in liters) should be removed?
 
 
+
+
 # Delivery
 
 The above problem is solved as a microservice exposing a JSON HTTP API,
@@ -38,7 +40,7 @@ METHOD | QUERY | BODY | DESCRIPTION | RETURN
 
 
 
-# How to build the source code
+# How to build the source code and create the docker image
 
     make image
 
@@ -48,6 +50,34 @@ METHOD | QUERY | BODY | DESCRIPTION | RETURN
 # How to run the server
 
     make run
+
+
+
+
+# How to re create the whole thing and run a new server
+
+    make bornagain
+
+
+
+
+# How to cleanup the environment
+
+    make clean
+
+
+
+
+# How to stop the server
+
+    make stop
+
+
+
+
+# How to start the previously stopped server
+
+    make start
 
 
 
