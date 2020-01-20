@@ -1,3 +1,18 @@
+# Table of Contents
+
+- [Problem statement](#Problem-statement)
+- [Delivery](#Delivery)
+- [How to build the source code and create the docker image](#How-to-build-the-source-code-and-create-the-docker-image)
+- [How to run the server](#mHow-to-run-the-server)
+- [How to re create the whole thing and run a new server](#How-to-re-create-the-whole-thing-and-run-a-new-server)
+- [How to cleanup the environment](#How-to-cleanup-the-environment)
+- [How to stop the server](#How-to-stop-the-server)
+- [How to start the previously stopped server](#How-to-start-the-previously-stopped-server)
+- [Perform tests](#Perform-tests)
+
+
+
+
 # Problem statement
 
 Assume you have `n` hazardous liquids `m1, m2, ..., mn` in some inventory.
